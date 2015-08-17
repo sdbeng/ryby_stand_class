@@ -10,7 +10,7 @@ class Player
   end
 
   def score
-    @health = health + 8
+    @health + @name.length
   end
 
   def to_s
