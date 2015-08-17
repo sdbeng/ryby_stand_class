@@ -55,6 +55,14 @@ puts player2.health
 puts player2.score
 puts player2
 
+players = [player1,player2,player3]
+puts "There are #{players.size} players in the game"
+
+#use each method
+players.each do |obj|
+  puts obj
+end
+
 
 
 
