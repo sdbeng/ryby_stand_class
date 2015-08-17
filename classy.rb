@@ -11,7 +11,7 @@ class Player
   end
 
   def w00t
-    @health += 10
+    @health += 15
    puts "#{@name} got w00ted!"
   end
 
