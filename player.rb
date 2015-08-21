@@ -25,6 +25,10 @@ class Player
    puts "#{@name} got blammed!"
   end
 
+  def strong?
+    @health > 100
+  end
+
 end
 
 #add sample code - recommended

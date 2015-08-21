@@ -15,8 +15,9 @@ class Game
   def play
     puts "There are #{@players.size} players in #{@title}: "
     @players.each do |player|
-      player.w00t
       player.blam
+      player.w00t
+      player.w00t
       puts player
     end
   end

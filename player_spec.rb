@@ -50,5 +50,26 @@ end
 		expect(@player.health).to eq(@initial_health - 10)
 	end
 
+	#TDD
+	#create a context to set up a player's health
+	context "Sets up a player with initial health of 150" do
+		before do
+			@player = Player.new("larry", 150)
+		end
 
+		it "is strong" do
+			expect(@player.strong?).to eq(true)
+			#Or, you can try this variation when refactor w/syntactic sugar
+			# expect(@player).to be_strong
+		end
+	end
+	context "Sets up player with initial health of 100 or less" do
+		before do
+			@player = Player.new("larry", 100)
+		end
+
+		it "is wimpy" do
+			expect(@player.strong?).to eq(false)
+		end
+	end
 end
