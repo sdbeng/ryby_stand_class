@@ -2,7 +2,7 @@ class Player
   attr_reader :health
   attr_accessor :name
 
-  def initialize(name, health=100)
+  def initialize(name, health=150)
     @name = name.capitalize
     @health = health
   end
