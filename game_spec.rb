@@ -20,4 +20,20 @@ RSpec.describe Game do
 
  		expect(@player.health).to eq(@initial_health + 15)
   	end
+
+  	it "rolling medium number skips player" do
+  		allow_any_instance_of(Die).to receive(:roll).and_return(3)
+
+  		@game.play
+
+ 		expect(@player.health).to eq(@initial_health)
+  	end
+
+  	it "rolling low number decreases or blams its health by 10" do
+  		allow_any_instance_of(Die).to receive(:roll).and_return(1)
+
+  		@game.play
+
+  		expect(@player.health).to eq(@initial_health - 10)
+  	end
 end

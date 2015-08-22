@@ -1,6 +1,8 @@
 #because the game class depends on the Player class, need to require
 # the player file(no need the rb extension)
 require_relative 'player'
+require_relative 'die'
+require_relative 'game_turn'
 
 class Game
   attr_reader :title
@@ -15,11 +17,29 @@ class Game
   def play
     puts "There are #{@players.size} players in #{@title}: "
     @players.each do |player|
-      player.blam
-      player.w00t
-      player.w00t
       puts player
     end
+
+    #call the module method defined in game_turn.rb
+    @players.each do |player|
+      GameTurn.take_turn(player)
+      puts player
+    end
+
+    # moved this commented code insice the each block to module GameTurn-OJO!
+        # @players.each do |player|
+        #   die = Die.new
+        #   case die.roll
+        #     when 1..2
+        #       player.blam
+        #     when 3..4
+        #       puts "#{player.name} was skipped."
+        #     else
+        #       player.w00t
+        #     end
+        #   puts player
+        # end
+
   end
 
 end
