@@ -17,7 +17,7 @@ chipmunks = Game.new("Chipmunks")
 knuckeheads.add_player(player1)
 knuckeheads.add_player(player2)
 knuckeheads.add_player(player3)
-knuckeheads.play
+knuckeheads.play(3)
 
 chipmunks.add_player(player4)
 chipmunks.add_player(player5)

@@ -14,18 +14,21 @@ class Game
   def add_player(new_player)
     @players << new_player
   end
-  def play
+  def play(rounds)
     puts "There are #{@players.size} players in #{@title}: "
     @players.each do |player|
       puts player
     end
 
-    #call the module method defined in game_turn.rb
-    @players.each do |player|
-      GameTurn.take_turn(player)
-      puts player
+    1.upto(rounds) do |round|
+      #print the round number
+      puts "\nRound #{round}:"
+      #call the module method defined in game_turn.rb
+      @players.each do |player|
+        GameTurn.take_turn(player)
+        puts player
+      end
     end
-
     # moved this commented code insice the each block to module GameTurn-OJO!
         # @players.each do |player|
         #   die = Die.new
@@ -39,7 +42,5 @@ class Game
         #     end
         #   puts player
         # end
-
   end
-
 end
