@@ -22,6 +22,8 @@ knuckeheads.play(3)
 chipmunks.add_player(player4)
 chipmunks.add_player(player5)
 chipmunks.add_player(player6)
-chipmunks.play
+chipmunks.play(2)
+
+knuckeheads.print_stats
 
 
