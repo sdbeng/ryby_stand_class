@@ -29,7 +29,7 @@ class Game
         puts player
       end
     end
-    # moved this commented code insice the each block to module GameTurn-OJO!
+    # moved this commented code insice the each block to create module GameTurn-OJO!
         # @players.each do |player|
         #   die = Die.new
         #   case die.roll
@@ -60,7 +60,13 @@ class Game
       puts "#{p.name} (#{p.health})"
     end
     puts "#{@title} High Scores:"
+    #alt. we could remove sorted_players var, so we can use the sort method on the array of players(see Player class)
+    sorted_players = @players.sort {|a,b| b.score <=> a.score}
 
+    sorted_players.each do |p|
+      formatted_name = p.name.ljust(20, '.')
+      puts "#{formatted_name} #{p.score}"
+    end
 
   end
 
