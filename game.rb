@@ -3,6 +3,7 @@
 require_relative 'player'
 require_relative 'die'
 require_relative 'game_turn'
+require_relative 'treasure_trove'
 
 class Game
   attr_reader :title
@@ -11,14 +12,24 @@ class Game
     @title = title
     @players = []
   end
+
   def add_player(new_player)
     @players << new_player
   end
+
   def play(rounds)
     puts "There are #{@players.size} players in #{@title}: "
+
     @players.each do |player|
       puts player
     end
+
+    treasures = TreasureTrove::TREASURES
+    puts "\nThere are #{treasures.size} treasures to be found:"
+    treasures.each do |treasure|
+      puts "A #{treasure.name} is worth #{treasure.points} points"
+    end
+
 
     1.upto(rounds) do |round|
       #print the round number
@@ -26,7 +37,7 @@ class Game
       #call the module method defined in game_turn.rb
       @players.each do |player|
         GameTurn.take_turn(player)
-        puts player
+        # puts player
       end
     end
     # moved this commented code insice the each block to create module GameTurn-OJO!
@@ -40,7 +51,7 @@ class Game
         #     else
         #       player.w00t
         #     end
-        #   puts player
+          # puts player - except for this line
         # end
   end
 
@@ -49,7 +60,7 @@ class Game
     puts "*****************"
     puts "\n#{@title} stats:"
     puts "*****************"
-    puts "\n#{@strong_players.count} strong players:"
+    puts "\n#{@strong_players.count} strong players:" #i could of use size method too
 
     @strong_players.each do |p|
       puts "#{p.name} (#{p.health})"
@@ -59,7 +70,7 @@ class Game
     @wimpy_players.each do |p|
       puts "#{p.name} (#{p.health})"
     end
-    puts "#{@title} High Scores:"
+    puts "\n#{@title} High Scores:"
     #alt. we could remove sorted_players var, so we can use the sort method on the array of players(see Player class)
     sorted_players = @players.sort {|a,b| b.score <=> a.score}
 
@@ -67,9 +78,5 @@ class Game
       formatted_name = p.name.ljust(20, '.')
       puts "#{formatted_name} #{p.score}"
     end
-
   end
-
-
-
 end
